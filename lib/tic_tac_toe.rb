@@ -77,7 +77,7 @@ class TicTacToe
 
       if (@board[WIN_COMBINATIONS[0][0]] == "X" && @board[WIN_COMBINATIONS[0][1]] == "X" && @board[WIN_COMBINATIONS[0][2]] == "X") || (@board[WIN_COMBINATIONS[0][0]] == "O" && @board[WIN_COMBINATIONS[0][1]] == "O" && @board[WIN_COMBINATIONS[0][2]] == "O")
          return WIN_COMBINATIONS[0]
-      elsif (@board[WIN_COMBINATIONS[1][0]] == "X" && @board[WIN_COMBINATIONS[1][1]] == "X" && @board[WIN_COMBINATIONS[1][2]] == "X") || (@@board[WIN_COMBINATIONS[1][0]] == "O" && @board[WIN_COMBINATIONS[1][1]] == "O" && @board[WIN_COMBINATIONS[1][2]] == "O")
+      elsif (@board[WIN_COMBINATIONS[1][0]] == "X" && @board[WIN_COMBINATIONS[1][1]] == "X" && @board[WIN_COMBINATIONS[1][2]] == "X") || (@board[WIN_COMBINATIONS[1][0]] == "O" && @board[WIN_COMBINATIONS[1][1]] == "O" && @board[WIN_COMBINATIONS[1][2]] == "O")
          return WIN_COMBINATIONS[1]
       elsif (@board[WIN_COMBINATIONS[2][0]] == "X" && @board[WIN_COMBINATIONS[2][1]] == "X" && @board[WIN_COMBINATIONS[2][2]] == "X") || (@board[WIN_COMBINATIONS[2][0]] == "O" && @board[WIN_COMBINATIONS[2][1]] == "O" && @board[WIN_COMBINATIONS[2][2]] == "O")
          return WIN_COMBINATIONS[2]
