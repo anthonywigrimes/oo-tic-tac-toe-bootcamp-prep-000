@@ -27,11 +27,11 @@ class TicTacToe
     end
 
     def move(index, player)
-      board[position] = player
+      @board[position] = player
     end
 
     def position_taken?(index)
-      if board[position] == "X" || board[position] == "O"
+      if @board[position] == "X" || @board[position] == "O"
          true
       else
          false
@@ -39,7 +39,7 @@ class TicTacToe
     end
 
     def valid_move?(index)
-      if position.between?(0,8) && !position_taken?(board, position)
+      if index.between?(0,8) && !position_taken?(index)
          true
       else
          false
@@ -52,9 +52,9 @@ class TicTacToe
 
       int = input_to_index(move)
 
-      if valid_move?(board, int)
-          move(board, int, current_player(board))
-          display_board(board)
+      if valid_move?(int)
+          move(int, current_player)
+          display_board
       else
           puts "Please enter 1-9:"
           move = gets.strip
@@ -71,13 +71,13 @@ class TicTacToe
     end
 
     def won?
-      if board.all? { |spot| spot.strip == ""} == false
+      if @board.all? { |spot| spot.strip == ""} == false
          false
       end
 
-      if (board[WIN_COMBINATIONS[0][0]] == "X" && board[WIN_COMBINATIONS[0][1]] == "X" && board[WIN_COMBINATIONS[0][2]] == "X") || (board[WIN_COMBINATIONS[0][0]] == "O" && board[WIN_COMBINATIONS[0][1]] == "O" && board[WIN_COMBINATIONS[0][2]] == "O")
+      if (@board[WIN_COMBINATIONS[0][0]] == "X" && @board[WIN_COMBINATIONS[0][1]] == "X" && @board[WIN_COMBINATIONS[0][2]] == "X") || (@board[WIN_COMBINATIONS[0][0]] == "O" && @board[WIN_COMBINATIONS[0][1]] == "O" && @board[WIN_COMBINATIONS[0][2]] == "O")
          return WIN_COMBINATIONS[0]
-      elsif (board[WIN_COMBINATIONS[1][0]] == "X" && board[WIN_COMBINATIONS[1][1]] == "X" && board[WIN_COMBINATIONS[1][2]] == "X") || (board[WIN_COMBINATIONS[1][0]] == "O" && board[WIN_COMBINATIONS[1][1]] == "O" && board[WIN_COMBINATIONS[1][2]] == "O")
+      elsif (board[WIN_COMBINATIONS[1][0]] == "X" && board[WIN_COMBINATIONS[1][1]] == "X" && board[WIN_COMBINATIONS[1][2]] == "X") || (@board[WIN_COMBINATIONS[1][0]] == "O" && board[WIN_COMBINATIONS[1][1]] == "O" && board[WIN_COMBINATIONS[1][2]] == "O")
          return WIN_COMBINATIONS[1]
       elsif (board[WIN_COMBINATIONS[2][0]] == "X" && board[WIN_COMBINATIONS[2][1]] == "X" && board[WIN_COMBINATIONS[2][2]] == "X") || (board[WIN_COMBINATIONS[2][0]] == "O" && board[WIN_COMBINATIONS[2][1]] == "O" && board[WIN_COMBINATIONS[2][2]] == "O")
          return WIN_COMBINATIONS[2]
