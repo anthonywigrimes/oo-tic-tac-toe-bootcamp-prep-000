@@ -1,6 +1,6 @@
 class TicTacToe
-    def initialize(@board = nil)
-        @@board = @board || Array.new(9, " ")
+    def initialize(board = nil)
+        @board = board || Array.new(9, " ")
     end
 
     WIN_COMBINATIONS = [
@@ -15,11 +15,11 @@ class TicTacToe
     ]
 
     def display_board
-        puts " #{@@board[0]} | #{@@board[1]} | #{@@board[2]} "
+        puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
         puts "-----------"
-        puts " #{@@board[3]} | #{@@board[4]} | #{@@board[5]} "
+        puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
         puts "-----------"
-        puts " #{@@board[6]} | #{@@board[7]} | #{@@board[8]} "
+        puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
     end
 
     def input_to_index(input)
@@ -27,11 +27,11 @@ class TicTacToe
     end
 
     def move(index, player)
-      @@board[position] = player
+      @board[position] = player
     end
 
     def position_taken?(index)
-      if @@board[position] == "X" || @@board[position] == "O"
+      if @board[position] == "X" || @board[position] == "O"
          true
       else
          false
@@ -63,7 +63,7 @@ class TicTacToe
     end
 
     def turn_count
-        @@board.count{|token| token == "X" || token == "O"}
+        @board.count{|token| token == "X" || token == "O"}
     end
 
     def current_player
@@ -71,11 +71,11 @@ class TicTacToe
     end
 
     def won?
-      if @@board.all? { |spot| spot.strip == ""} == false
+      if @board.all? { |spot| spot.strip == ""} == false
          false
       end
 
-      if (@@board[WIN_COMBINATIONS[0][0]] == "X" && @@board[WIN_COMBINATIONS[0][1]] == "X" && @@board[WIN_COMBINATIONS[0][2]] == "X") || (@@board[WIN_COMBINATIONS[0][0]] == "O" && @@board[WIN_COMBINATIONS[0][1]] == "O" && @@board[WIN_COMBINATIONS[0][2]] == "O")
+      if (@board[WIN_COMBINATIONS[0][0]] == "X" && @board[WIN_COMBINATIONS[0][1]] == "X" && @board[WIN_COMBINATIONS[0][2]] == "X") || (@board[WIN_COMBINATIONS[0][0]] == "O" && @board[WIN_COMBINATIONS[0][1]] == "O" && @board[WIN_COMBINATIONS[0][2]] == "O")
          return WIN_COMBINATIONS[0]
       elsif (@board[WIN_COMBINATIONS[1][0]] == "X" && @board[WIN_COMBINATIONS[1][1]] == "X" && @board[WIN_COMBINATIONS[1][2]] == "X") || (@@board[WIN_COMBINATIONS[1][0]] == "O" && @board[WIN_COMBINATIONS[1][1]] == "O" && @board[WIN_COMBINATIONS[1][2]] == "O")
          return WIN_COMBINATIONS[1]
@@ -97,7 +97,7 @@ class TicTacToe
     end
 
     def full?
-      if @@board.all? { |spot| spot.strip != ""} == true
+      if @board.all? { |spot| spot.strip != ""} == true
          true
       else
          false
@@ -105,17 +105,17 @@ class TicTacToe
     end
 
     def draw?
-      if full?(@board) && !won?(@board)
+      if full? && !won?
          true
       end
     end
 
     def over?
-      if draw?(@board)
+      if draw?
          true
-      elsif full?(@board) && won?(@board)
+      elsif full? && won?
          true
-      elsif !full?(@board) && won?(@board)
+      elsif !full? && won?
          true
       else
          false
@@ -123,12 +123,12 @@ class TicTacToe
     end
 
     def winner
-      if !won?(@board) && full?(@board)
+      if !won? && full?
          return false
       end
 
-      if won?(@board)
-         win = won?(@board)
+      if won?
+         win = won?
          if @board[win[0]] == "X"
             "X"
          elsif @board[win[0]] == "O"
@@ -138,13 +138,13 @@ class TicTacToe
     end
 
     def play
-      until over?(@board) do
-         turn(@board)
+      until over? do
+         turn
       end
 
-      if won?(@board)
-         puts "Congratulations #{winner(@board)}!"
-      elsif draw?(@board)
+      if won?
+         puts "Congratulations #{winner}!"
+      elsif draw?
          puts "Cat's Game!"
       end
     end
