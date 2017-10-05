@@ -10,7 +10,7 @@ class TicTacToe
         [0,3,6],
         [1,4,7],
         [2,5,8],
-        [0,3,8],
+        [0,4,8],
         [6,4,2]
     ]
 
@@ -27,11 +27,11 @@ class TicTacToe
     end
 
     def move(index, player)
-      @board[position] = player
+      @board[index] = player
     end
 
     def position_taken?(index)
-      if @board[position] == "X" || @board[position] == "O"
+      if @board[index] == "X" || @board[index] == "O"
          true
       else
          false
