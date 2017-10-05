@@ -97,7 +97,7 @@ class TicTacToe
     end
 
     def full?
-      if board.all? { |spot| spot.strip != ""} == true
+      if @board.all? { |spot| spot.strip != ""} == true
          true
       else
          false
